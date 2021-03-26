@@ -1,5 +1,6 @@
 import 'package:firebase_demo/animations/animation_route.dart';
 import 'package:firebase_demo/screens/login.dart';
+import 'package:firebase_demo/screens/register.dart';
 import 'package:flutter/material.dart';
 
 // TODO: Responsive olarak düzenle!
@@ -50,7 +51,12 @@ class WelcomeScreen extends StatelessWidget {
                   buttonColor: Color(0xFFFFBA08),
                   buttonText: 'Kayıt Ol',
                   onPressed: () {
-                    print("Kayıt Ol");
+                    Navigator.of(context).push(
+                      enterExitRoute(
+                        this,
+                        RegisterScreen(),
+                      ),
+                    );
                   },
                 ),
               ],

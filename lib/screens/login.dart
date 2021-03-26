@@ -2,6 +2,7 @@ import 'package:firebase_demo/screens/register.dart';
 import 'package:firebase_demo/widgets/auth_button.dart';
 import 'package:firebase_demo/widgets/auth_form_field.dart';
 import 'package:firebase_demo/widgets/auth_question.dart';
+import 'package:firebase_demo/widgets/auth_scaffold.dart';
 import 'package:firebase_demo/widgets/social_auth_button.dart';
 import 'package:flutter/material.dart';
 
@@ -15,26 +16,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFF03071E),
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: Text(
-          "Giriş Yap",
-          style: TextStyle(
-            fontSize: 24,
-            fontFamily: 'Lato',
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        leading: IconButton(
-          icon: Icon(
-            Icons.keyboard_arrow_left,
-            size: 40,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+    return AuthScaffold(
+      appBarTitle: "Giriş Yap",
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 44.0),
@@ -59,8 +42,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SocialAuthButton(),
-                    SocialAuthButton(),
+                    SocialAuthButton(
+                      iconName: "google",
+                    ),
+                    SocialAuthButton(
+                      iconName: "facebook",
+                    ),
                   ],
                 ),
               ),
@@ -96,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(top: 50, bottom: 12),
+                padding: EdgeInsets.only(top: 50, bottom: 4),
                 child: AuthButton(
                   buttonText: 'Giriş Yap',
                   onPressed: () {
@@ -108,6 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 questionText: "Bir hesabın yok mu?",
                 buttonText: "Kayıt Ol.",
                 nextRoute: RegisterScreen(),
+                exitRoute: this.widget,
               ),
             ],
           ),

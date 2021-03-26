@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class SocialAuthButton extends StatelessWidget {
-  const SocialAuthButton({
-    Key key,
-  }) : super(key: key);
+  final String iconName;
+
+  const SocialAuthButton({Key key, this.iconName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {},
-      child: Icon(Icons.snooze),
+      child: customButtonIcon,
       style: ElevatedButton.styleFrom(
         primary: Color(0xFF101010),
         side: BorderSide(
@@ -22,4 +22,10 @@ class SocialAuthButton extends StatelessWidget {
       ),
     );
   }
+
+  Image get customButtonIcon => Image.asset(
+        "assets/images/$iconName.png",
+        width: 28,
+        height: 28,
+      );
 }

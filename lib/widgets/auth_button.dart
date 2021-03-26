@@ -4,16 +4,13 @@ class AuthButton extends StatelessWidget {
   final String buttonText;
   final Function onPressed;
 
-  const AuthButton({Key key, this.buttonText, this.onPressed}) : super(key: key);
+  const AuthButton({Key key, this.buttonText, this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: Text(buttonText, style: TextStyle(
-        fontSize: 24,
-        fontFamily: 'Lato',
-        fontWeight: FontWeight.w700,
-      ),),
+      child: customButtonText,
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
           primary: Color(0xFF6A040F),
@@ -23,4 +20,13 @@ class AuthButton extends StatelessWidget {
           )),
     );
   }
+
+  Text get customButtonText => Text(
+        buttonText,
+        style: TextStyle(
+          fontSize: 24,
+          fontFamily: 'Lato',
+          fontWeight: FontWeight.w700,
+        ),
+      );
 }
