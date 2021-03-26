@@ -8,16 +8,16 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/welcome_screen.jpg'),
-              fit: BoxFit.cover,
-            ),
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/welcome_screen.jpg'),
+            fit: BoxFit.cover,
           ),
+        ),
+        child: SafeArea(
           child: Padding(
             padding: EdgeInsets.only(left: 36.0, right: 36.0),
             child: Column(
