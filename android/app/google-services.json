@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "564708160068",
+    "project_id": "movie-demo-e22e2",
+    "storage_bucket": "movie-demo-e22e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564708160068:android:c7ef50a99a051a9a8e8211",
+        "android_client_info": {
+          "package_name": "com.burak.firebase_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564708160068-0l2709rbaml1r3llvofj8v6tugdci10c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIytqU5My0RkZWk8XcyybQhpodp4LEFfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564708160068-0l2709rbaml1r3llvofj8v6tugdci10c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
