@@ -1,10 +1,12 @@
 import 'package:firebase_demo/screens/register.dart';
+import 'package:firebase_demo/services/authentication.dart';
 import 'package:firebase_demo/widgets/auth_button.dart';
 import 'package:firebase_demo/widgets/auth_form_field.dart';
 import 'package:firebase_demo/widgets/auth_question.dart';
 import 'package:firebase_demo/widgets/auth_scaffold.dart';
 import 'package:firebase_demo/widgets/social_auth_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = "login";
@@ -14,6 +16,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return AuthScaffold(
@@ -64,7 +70,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    AuthFormField(),
+                    AuthFormField(
+                      textEditingController: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
                   ],
                 ),
               ),
@@ -79,7 +88,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  AuthFormField(),
+                  AuthFormField(
+                    textEditingController: passwordController,
+                    obscure: true,
+                  ),
                 ],
               ),
               Padding(
@@ -87,7 +99,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: AuthButton(
                   buttonText: 'Giriş Yap',
                   onPressed: () {
-                    print("H");
+                    context.read<AuthenticationService>().login(
+                      email: emailController.text,
+                      password: passwordController.text,
+                      context: context,
+                    );
                   },
                 ),
               ),
