@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 class SocialAuthButton extends StatelessWidget {
   final String iconName;
+  final Function onPressed;
 
-  const SocialAuthButton({Key key, this.iconName}) : super(key: key);
+  const SocialAuthButton({Key key, this.iconName, this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       child: customButtonIcon,
       style: ElevatedButton.styleFrom(
         primary: Color(0xFF101010),

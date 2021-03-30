@@ -13,6 +13,7 @@ class AuthScaffold extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFF03071E),
       extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: appBarText,
         leading: appBarIconButton(context),
