@@ -37,8 +37,12 @@ class RegisterScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SocialAuthButton(),
-                    SocialAuthButton(),
+                    SocialAuthButton(
+                      iconName: "google",
+                    ),
+                    SocialAuthButton(
+                      iconName: "facebook",
+                    ),
                   ],
                 ),
               ),
