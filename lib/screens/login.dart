@@ -1,12 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_demo/screens/register.dart';
 import 'package:firebase_demo/services/authentication.dart';
+import 'package:firebase_demo/theme/size_config.dart';
 import 'package:firebase_demo/widgets/auth_button.dart';
 import 'package:firebase_demo/widgets/auth_form_field.dart';
 import 'package:firebase_demo/widgets/auth_question.dart';
 import 'package:firebase_demo/widgets/auth_scaffold.dart';
 import 'package:firebase_demo/widgets/social_auth_button.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = "login";
@@ -16,9 +17,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  AuthenticationService _authenticationService =
+      AuthenticationService(FirebaseAuth.instance);
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +29,13 @@ class _LoginScreenState extends State<LoginScreen> {
       appBarTitle: "Giriş Yap",
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 44.0),
+          padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(44)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: 14.0),
+                padding: EdgeInsets.only(bottom: getProportionateScreenHeight(14)),
                 child: Text(
                   "Bunlardan biriyle giriş yapabilirsiniz.",
                   style: TextStyle(
@@ -44,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 30.0),
+                padding: EdgeInsets.only(bottom: getProportionateScreenHeight(30)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -58,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 30.0),
+                padding: EdgeInsets.only(bottom: getProportionateScreenHeight(30)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -95,15 +98,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(top: 50, bottom: 4),
+                padding: EdgeInsets.only(top: getProportionateScreenHeight(50), bottom: getProportionateScreenHeight(4)),
                 child: AuthButton(
                   buttonText: 'Giriş Yap',
                   onPressed: () {
-                    context.read<AuthenticationService>().login(
-                      email: emailController.text,
-                      password: passwordController.text,
-                      context: context,
-                    );
+                    _authenticationService.login(
+                          email: emailController.text,
+                          password: passwordController.text,
+                          context: context,
+                        );
                   },
                 ),
               ),

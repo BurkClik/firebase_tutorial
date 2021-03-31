@@ -1,3 +1,4 @@
+import 'package:firebase_demo/theme/size_config.dart';
 import 'package:flutter/material.dart';
 
 class AuthButton extends StatelessWidget {
@@ -14,7 +15,7 @@ class AuthButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
           primary: Color(0xFF6A040F),
-          minimumSize: Size(double.infinity, 60),
+          minimumSize: Size(double.infinity, getProportionateScreenWidth(54)),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           )),

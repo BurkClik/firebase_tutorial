@@ -1,9 +1,28 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_demo/services/authentication.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   static String routeName = "home";
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  SharedPreferences sharedPreferences;
+
+  _getValues() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getValues();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,13 +33,17 @@ class Home extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.exit_to_app),
             onPressed: () {
-              context.read<AuthenticationService>().logout(context);
+              sharedPreferences.clear();
+              AuthenticationService(FirebaseAuth.instance).logout(context);
             },
           ),
         ],
       ),
       body: Center(
-        child: Text('Home'),
+        child: ElevatedButton(
+          onPressed: () {},
+          child: Text('Bas Bana'),
+        ),
       ),
     );
   }

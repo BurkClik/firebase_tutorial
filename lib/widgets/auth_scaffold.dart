@@ -1,5 +1,3 @@
-import 'package:firebase_demo/animations/animation_route.dart';
-import 'package:firebase_demo/screens/welcome.dart';
 import 'package:flutter/material.dart';
 
 class AuthScaffold extends StatelessWidget {
