@@ -2,13 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_demo/regex.dart';
 import 'package:firebase_demo/screens/login.dart';
 import 'package:firebase_demo/services/authentication.dart';
+import 'package:firebase_demo/theme/size_config.dart';
 import 'package:firebase_demo/widgets/auth_button.dart';
 import 'package:firebase_demo/widgets/auth_form_field.dart';
 import 'package:firebase_demo/widgets/auth_question.dart';
 import 'package:firebase_demo/widgets/auth_scaffold.dart';
 import 'package:firebase_demo/widgets/social_auth_button.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   static String routeName = "register";
@@ -18,6 +18,9 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  AuthenticationService _authenticationService =
+      AuthenticationService(FirebaseAuth.instance);
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -31,13 +34,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBarTitle: "Kayıt Ol",
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 44.0),
+          padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(44)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: 14.0),
+                padding: EdgeInsets.only(bottom: getProportionateScreenHeight(14)),
                 child: Text(
                   "Bunlardan birisiyle kayıt olabilirsiniz.",
                   style: TextStyle(
@@ -49,24 +52,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 30.0),
+                padding: EdgeInsets.only(bottom: getProportionateScreenHeight(30)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SocialAuthButton(
                       iconName: "google",
-                      onPressed: () {
-                        context
-                            .read<AuthenticationService>()
-                            .authStateChanges
-                            .listen((User user) {
-                          if (user == null) {
-                            print('User is currently yok');
-                          } else {
-                            print(user.email);
-                          }
-                        });
-                      },
+                      onPressed: () {},
                     ),
                     SocialAuthButton(
                       iconName: "facebook",
@@ -80,7 +72,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(bottom: 30.0),
+                      padding: EdgeInsets.only(bottom: getProportionateScreenHeight(30)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -144,7 +136,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 30.0),
+                      padding: EdgeInsets.only(top: getProportionateScreenHeight(30)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -183,16 +175,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 50, bottom: 4),
+                padding: EdgeInsets.only(top: getProportionateScreenHeight(50), bottom: getProportionateScreenHeight(4)),
                 child: AuthButton(
                   buttonText: 'Kayıt Ol',
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      context.read<AuthenticationService>().signUp(
-                            email: emailController.text,
-                            password: passwordController.text,
-                            context: context,
-                          );
+                      _authenticationService.signUp(
+                        email: emailController.text,
+                        password: passwordController.text,
+                        context: context,
+                      );
                     }
                   },
                 ),

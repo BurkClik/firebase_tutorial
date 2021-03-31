@@ -1,3 +1,4 @@
+import 'package:firebase_demo/theme/size_config.dart';
 import 'package:flutter/material.dart';
 
 class SocialAuthButton extends StatelessWidget {
@@ -19,14 +20,14 @@ class SocialAuthButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
-        minimumSize: Size(124, 60),
+        minimumSize: Size(getProportionateScreenHeight(160), getProportionateScreenWidth(60)),
       ),
     );
   }
 
   Image get customButtonIcon => Image.asset(
         "assets/images/$iconName.png",
-        width: 28,
-        height: 28,
+        width: getProportionateScreenWidth(36),
+        height: getProportionateScreenHeight(36),
       );
 }

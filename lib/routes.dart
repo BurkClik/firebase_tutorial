@@ -1,3 +1,4 @@
+import 'package:firebase_demo/auth_wrapper.dart';
 import 'package:firebase_demo/screens/home.dart';
 import 'package:firebase_demo/screens/login.dart';
 import 'package:firebase_demo/screens/register.dart';
@@ -9,4 +10,5 @@ final Map<String, WidgetBuilder> routes = {
   LoginScreen.routeName: (context) => LoginScreen(),
   RegisterScreen.routeName: (context) => RegisterScreen(),
   Home.routeName: (context) => Home(),
+  AuthWrapper.routeName: (context) => AuthWrapper(),
 };

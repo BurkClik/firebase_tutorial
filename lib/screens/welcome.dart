@@ -1,6 +1,7 @@
 import 'package:firebase_demo/animations/animation_route.dart';
 import 'package:firebase_demo/screens/login.dart';
 import 'package:firebase_demo/screens/register.dart';
+import 'package:firebase_demo/theme/size_config.dart';
 import 'package:flutter/material.dart';
 
 // TODO: Responsive olarak düzenle!
@@ -20,18 +21,18 @@ class WelcomeScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.only(left: 36.0, right: 36.0),
+            padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(36)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 48.0, bottom: 24.0),
+                  padding: EdgeInsets.only(top: getProportionateScreenHeight(48), bottom: getProportionateScreenHeight(24)),
                   child: Image.asset('assets/images/app_icon.png'),
                 ),
                 buildText('Enjoy the trip'),
                 buildText('with me'),
                 SizedBox(
-                  height: 280,
+                  height: getProportionateScreenHeight(280),
                 ),
                 buildElevatedButton(
                     buttonColor: Color(0xFF03071E),
@@ -45,7 +46,7 @@ class WelcomeScreen extends StatelessWidget {
                       );
                     }),
                 SizedBox(
-                  height: 24,
+                  height: getProportionateScreenHeight(24),
                 ),
                 buildElevatedButton(
                   buttonColor: Color(0xFFFFBA08),
@@ -81,7 +82,7 @@ class WelcomeScreen extends StatelessWidget {
       ),
       style: ElevatedButton.styleFrom(
         primary: buttonColor,
-        minimumSize: Size(double.infinity, 60),
+        minimumSize: Size(double.infinity, getProportionateScreenWidth(54)),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(32),
         ),

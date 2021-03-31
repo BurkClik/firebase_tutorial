@@ -46,10 +46,11 @@ class AuthFormField extends StatelessWidget {
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(
-              color: Colors.red,
-            )),
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: Colors.red,
+          ),
+        ),
       ),
     );
   }
